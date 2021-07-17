@@ -39,7 +39,7 @@ module SUI
       sui_primitive << { x: x + w / 2 - bar_width / 2 + padding, y: y + padding, w: bar_width - padding * 2, h: h - padding * 2,
                          r: bar_color[0], g: bar_color[1], b: bar_color[2], primitive_marker: :solid }
     else
-      sui_primitive << { x: x + bar_width * 2, y: y, w: bar_width, h: h, r: bar_color[0], g: bar_color[1], b: bar_color[2],
+      sui_primitive << { x: x + w / 2 - bar_width / 2 + padding, y: y, w: bar_width, h: h, r: bar_color[0], g: bar_color[1], b: bar_color[2],
                          primitive_marker: :solid }
     end
   end
@@ -53,7 +53,7 @@ module SUI
       sui_primitive << { x: x + w - bar_width + padding, y: y + padding, w: bar_width - padding * 2, h: h - padding * 2,
                          r: bar_color[0], g: bar_color[1], b: bar_color[2], primitive_marker: :solid }
     else
-      sui_primitive << { x: x - bar_width, y: y, w: bar_width, h: h, r: bar_color[0], g: bar_color[1], b: bar_color[2],
+      sui_primitive << { x: x + w - bar_width, y: y, w: bar_width, h: h, r: bar_color[0], g: bar_color[1], b: bar_color[2],
                          primitive_marker: :solid }
     end
   end

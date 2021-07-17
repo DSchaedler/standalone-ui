@@ -7,11 +7,12 @@ module SUI
     $gtk.args.state.sui_checkboxes[id] ||= { id: id, x: x, y: y, w: w, h: h, box_color: box_color,
                                          fill_color: fill_color, padding: padding, checked: checked }
     sui_primitive = []
-    if $gtk.args.state.sui_checkboxes[id][:checked]
-      sui_primitive << { x: x + padding, y: y + padding, w: w - padding * 2, h: h - padding * 2, r: fill_color[0],
-                         g: fill_color[1], b: fill_color[2], primitive_marker: :solid }
+    this_checkbox = $gtk.args.state.sui_checkboxes[id]
+    if this_checkbox[:checked]
+      sui_primitive << { x: this_checkbox[:x] + this_checkbox[:padding], y: this_checkbox[:y] + this_checkbox[:padding], w: this_checkbox[:w] - this_checkbox[:padding] * 2, h: this_checkbox[:h] - this_checkbox[:padding] * 2, r: this_checkbox[:fill_color][0],
+                         g: this_checkbox[:fill_color][1], b: this_checkbox[:fill_color][2], primitive_marker: :solid }
     end
-    sui_primitive << { x: x, y: y, w: w, h: h, r: box_color[0], g: box_color[1], b: box_color[2],
+    sui_primitive << { x: this_checkbox[:x], y: this_checkbox[:y], w: this_checkbox[:w], h: this_checkbox[:h], r: this_checkbox[:box_color][0], g: this_checkbox[:box_color][1], b: this_checkbox[:box_color][2],
                        primitive_marker: :border }
   end
 

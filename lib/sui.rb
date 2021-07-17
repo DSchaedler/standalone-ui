@@ -8,7 +8,7 @@ DEGREES_TO_RADIANS = Math::PI / 180
 # Drop-in ui elements for DRGTK
 module SUI
   def ui_update
-    self.checkboxes_check_click # rubocop:disable Style/RedundantSelf
+    SUI.checkboxes_check_click # rubocop:disable Style/RedundantSelf
   end
 
   def hex_to_rgb(hexstring)

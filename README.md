@@ -1,3 +1,4 @@
+# standalone-ui
 standalone-ui (SUI or sui) is designed to be a drop-in way to easily create UI Elements in DragonRuby Game Toolkit with no dependencies. This means no sprites, font files, or frameworks.  
 
 The indivdual sub-module files can be used independently as well, if you only want to implement one feature. Be sure to `include 'lib/sui/sub_module_name.rb'` in your `main.rb` or `require` file.  

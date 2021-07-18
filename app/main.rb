@@ -9,6 +9,8 @@ def tick(args)
   sui_primitive << bar(args)
   sui_primitive << checkbox
 
+  sui_primitive << SUI.button(id: :first, text: 'Button', x: CENTER_X, y: CENTER_Y)
+
   # Print
   args.outputs.primitives << sui_primitive
 end

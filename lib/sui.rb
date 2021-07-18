@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
-require 'lib/sui/bar.rb' # rubocop:disable Style/RedundantFileExtensionInRequire
-require 'lib/sui/checkbox.rb' # rubocop:disable Style/RedundantFileExtensionInRequire
+require 'lib/sui/bar.rb'
+require 'lib/sui/button.rb'
+require 'lib/sui/checkbox.rb'
+
+# These Constants are not namespaced
+DEGREES_TO_RADIANS = Math::PI / 180
+CENTER_X = 640
+CENTER_Y = 360
 
 # Drop-in ui elements for DRGTK
 module SUI
-  DEGREES_TO_RADIANS = Math::PI / 180
-  CENTER_X = 640
-  CENTER_Y = 360
 
   def ui_update
     SUI.checkboxes_check_click

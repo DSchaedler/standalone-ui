@@ -2,7 +2,8 @@
 
 # Percent Bars
 module SUI
-  def bar(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0], border_color: [0, 0, 0], padding: 2, align: :left)
+  def bar(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0],
+          border_color: [0, 0, 0], padding: 2, align: :left)
     sui_primitive = []
     case align
     when :left
@@ -30,7 +31,8 @@ module SUI
     end
   end
 
-  def bar_center(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0], border_color: [0, 0, 0], padding: 2)
+  def bar_center(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0],
+                 border_color: [0, 0, 0], padding: 2)
     sui_primitive = []
     bar_width = w * percent
     if border
@@ -44,7 +46,8 @@ module SUI
     end
   end
 
-  def bar_right(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0], border_color: [0, 0, 0], padding: 2)
+  def bar_right(x:, y:, percent:, w: 100, h: 20, border: true, bar_color: [0, 0, 0],
+                border_color: [0, 0, 0], padding: 2)
     sui_primitive = []
     bar_width = w * percent
     if border
@@ -58,3 +61,5 @@ module SUI
     end
   end
 end
+
+SUI.extend SUI

@@ -5,7 +5,7 @@ module SUI
   def checkbox(id:, x:, y:, w: 20, h: 20, box_color: [0, 0, 0], fill_color: [0, 0, 0], padding: 2, checked: false)
     $gtk.args.state.sui_checkboxes ||= {}
     $gtk.args.state.sui_checkboxes[id] ||= { id: id, x: x, y: y, w: w, h: h, box_color: box_color,
-                                         fill_color: fill_color, padding: padding, checked: checked }
+                                             fill_color: fill_color, padding: padding, checked: checked }
     sui_primitive = []
     this_checkbox = $gtk.args.state.sui_checkboxes[id]
     if this_checkbox[:checked]
@@ -40,3 +40,5 @@ module SUI
     $gtk.args.state.sui_checkboxes = {}
   end
 end
+
+SUI.extend SUI

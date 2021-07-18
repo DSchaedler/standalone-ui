@@ -3,12 +3,14 @@
 require 'lib/sui/bar.rb' # rubocop:disable Style/RedundantFileExtensionInRequire
 require 'lib/sui/checkbox.rb' # rubocop:disable Style/RedundantFileExtensionInRequire
 
-DEGREES_TO_RADIANS = Math::PI / 180
-
 # Drop-in ui elements for DRGTK
 module SUI
+  DEGREES_TO_RADIANS = Math::PI / 180
+  CENTER_X = 640
+  CENTER_Y = 360
+
   def ui_update
-    SUI.checkboxes_check_click # rubocop:disable Style/RedundantSelf
+    SUI.checkboxes_check_click
   end
 
   def hex_to_rgb(hexstring)
@@ -26,3 +28,5 @@ module SUI
     [mean + scale * Math.cos(theta), mean + scale * Math.sin(theta)]
   end
 end
+
+SUI.extend SUI

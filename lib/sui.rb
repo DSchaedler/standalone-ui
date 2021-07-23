@@ -11,7 +11,6 @@ CENTER_Y = 360
 
 # Drop-in ui elements for DRGTK
 module SUI
-
   def ui_update
     SUI.checkboxes_check_click
   end

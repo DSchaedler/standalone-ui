@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'lib/sui.rb' # rubocop:disable Style/RedundantFileExtensionInRequire
+require 'lib/sui.rb'
 
 def tick(args)
   SUI.ui_update # Checks for required changes, like checkbox clicks

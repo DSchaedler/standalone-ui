@@ -19,10 +19,10 @@ module SUI
 
   def left_button(id:, text:, x:, y:, w: 100, h: 40, border: true, border_color: [0, 0, 0],
                   fill_color: [255, 255, 255], pressed_color: [127, 127, 127], text_color: [0, 0, 0], padding: 2)
-    $gtk.args.state.sui_buttons = { id => { id: id, text: text, x: x, y: y, w: w, h: h, border: border,
-                                            border_color: border_color, fill_color: fill_color,
-                                            pressed_color: pressed_color, text_color: text_color, padding: padding,
-                                            align: :left, pressed: false } }
+    $gtk.args.state.sui_buttons ||= {}
+    $gtk.args.state.sui_buttons[id] =
+      { id: id, text: text, x: x, y: y, w: w, h: h, border: border, border_color: border_color, fill_color: fill_color,
+        pressed_color: pressed_color, text_color: text_color, padding: padding, align: :left, pressed: false }
 
     (sui_primitive = []) << part_button(id)
     b = $gtk.args.state.sui_buttons[id]

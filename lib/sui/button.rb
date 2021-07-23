@@ -6,32 +6,15 @@ module SUI
              fill_color: [255, 255, 255], pressed_color: [127, 127, 127], text_color: [0, 0, 0], padding: 2,
              align: :left)
     $gtk.args.state.sui_buttons ||= {}
-    sui_primitive = []
-
-    case align
-    when :left
-      sui_primitive << left_button(id: id, text: text, x: x, y: y, w: w, h: h, border: border,
-                                   border_color: border_color, fill_color: fill_color,
-                                   pressed_color: pressed_color, text_color: text_color,
-                                   padding: padding)
-    end
-  end
-
-  def left_button(id:, text:, x:, y:, w: 100, h: 40, border: true, border_color: [0, 0, 0],
-                  fill_color: [255, 255, 255], pressed_color: [127, 127, 127], text_color: [0, 0, 0], padding: 2)
-    $gtk.args.state.sui_buttons ||= {}
     $gtk.args.state.sui_buttons[id] =
       { id: id, text: text, x: x, y: y, w: w, h: h, border: border, border_color: border_color, fill_color: fill_color,
-        pressed_color: pressed_color, text_color: text_color, padding: padding, align: :left, pressed: false }
+        pressed_color: pressed_color, text_color: text_color, padding: padding, align: align, pressed: false }
 
     (sui_primitive = []) << part_button(id)
-    b = $gtk.args.state.sui_buttons[id]
 
-    return unless b[:text] != ''
+    return unless $gtk.args.state.sui_buttons[id][:text] != ''
 
-    y_pos = b[:y] + b[:h] / 2 + $gtk.args.gtk.calcstringbox(b[:text])[1] / 2 - padding
-    sui_primitive << { x: b[:x] + padding, y: y_pos, text: b[:text], r: b[:text_color][0],
-                       g: b[:text_color][1], b: b[:text_color][2] }
+    sui_primitive << part_string(id)
   end
 
   def part_button(button_id)
@@ -48,6 +31,22 @@ module SUI
 
     sui_primitive << b_box.merge({ r: b[:border_color][0], g: b[:border_color][1], b: b[:border_color][2],
                                    primitive_marker: :border })
+  end
+
+  def part_string(button_id)
+    b = $gtk.args.state.sui_buttons[button_id]
+    y_pos = b[:y] + b[:h] / 2 + $gtk.args.gtk.calcstringbox(b[:text])[1] / 2 - b[:padding]
+    b_box = { x: b[:x] + b[:padding], y: y_pos, text: b[:text], r: b[:text_color][0], g: b[:text_color][1], b: b[:text_color][2] }
+
+    case b[:align]
+    when :left
+      ( sui_primitive = [] ) << b_box.merge({ alignment_enum: 0 })
+    when :center
+      ( sui_primitive = [] ) << b_box.merge({ alignment_enum: 1 })
+    when :right
+      ( sui_primitive = [] ) << b_box.merge({ alignment_enum: 2 })
+    end
+    sui_primitive
   end
 end
 
